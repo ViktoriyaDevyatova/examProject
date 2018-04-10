@@ -14,19 +14,19 @@ import java.util.List;
 public class GoogleSearchPage extends GoogleBasePage{
 
     /**
-     *"listOfResults" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     *"listOfResults" webelement declaration and initialization of it's locator via @FindBy annotation.
      */
     @FindBy(xpath = "//div[@class= 'srg']//div[@class= 'g']")
     private List<WebElement> listOfResults;
 
     /**
-     *"searchStatus" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     *"searchStatus" webelement declaration and initialization of it's locator via @FindBy annotation.
      */
     @FindBy(xpath = "//div[@id='resultStats']")
     private WebElement searchStatus;
 
     /**
-     *"secondPage" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     *"secondPage" webelement declaration and initialization of it's locator via @FindBy annotation.
      */
     @FindBy(xpath = "//a[@aria-label='Page 2']")
     private WebElement secondPage;

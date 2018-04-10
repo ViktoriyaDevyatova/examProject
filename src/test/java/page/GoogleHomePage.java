@@ -12,13 +12,13 @@ import org.openqa.selenium.support.PageFactory;
 public class GoogleHomePage extends GoogleBasePage {
 
     /**
-     *"searchField" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     *"searchField" webelement declaration and initialization of it's locator via @FindBy annotation.
      */
     @FindBy(id = "lst-ib")
     private WebElement searchField;
 
     /**
-     *"submitButton" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     *"submitButton" webelement declaration and initialization of it's locator via @FindBy annotation.
      */
     @FindBy(xpath = "//input[@aria-label='Пошук Google']")
     private WebElement submitButton;
@@ -36,7 +36,7 @@ public class GoogleHomePage extends GoogleBasePage {
     /**
      * Method which verifies if the search filed is displayed on the web page.
      * In case when search field is visible method confirms that web page is loaded.
-     * Method extended from GoogleBasePage.
+     * Method extended from GoogleBasePage class.
      */
     public boolean isLoaded() {
         boolean isLoaded;
