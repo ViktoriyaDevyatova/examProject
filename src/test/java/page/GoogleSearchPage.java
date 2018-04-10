@@ -13,20 +13,40 @@ import java.util.List;
  */
 public class GoogleSearchPage extends GoogleBasePage{
 
+    /**
+     *"listOfResults" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     */
     @FindBy(xpath = "//div[@class= 'srg']//div[@class= 'g']")
     private List<WebElement> listOfResults;
 
+    /**
+     *"searchStatus" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     */
     @FindBy(xpath = "//div[@id='resultStats']")
     private WebElement searchStatus;
 
+    /**
+     *"secondPage" variable declaration and initialization at the moment when the variable uses via @FindBy.
+     */
     @FindBy(xpath = "//a[@aria-label='Page 2']")
     private WebElement secondPage;
 
+
+    /**
+     * Constructor of GoogleHomePage class which takes WebDriver instance from GoogleBasePage class
+     * and initializes @FindBy GoogleHomePage class WebElements via PageFactory
+     * @param webDriver - webdriver instance
+     */
     public GoogleSearchPage(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
     }
 
+    /**
+     * Method which verifies if the search status is displayed on the web page.
+     * In case when search status is visible method confirms that web page is loaded.
+     * Method extended from GoogleBasePage.
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {
@@ -37,6 +57,10 @@ public class GoogleSearchPage extends GoogleBasePage{
         return isLoaded;
     }
 
+    /**
+     * Method which waits until search status is visible on the web page and gets search results
+     * @return list of results in String
+     */
     public List<String> getResults() {
 
         waitTillElementIsVisible(searchStatus, 5);
@@ -50,19 +74,12 @@ public class GoogleSearchPage extends GoogleBasePage{
     }
 
 
+    /**
+     * Method which click to the webelement secondPage to navigate into it.
+     */
     public boolean navigateToSecondPage(){
         secondPage.click();
         return true;
     }
 
-//    public List<String> getResultsFromSecondPage() {
-//
-//        waitTillElementIsVisible(searchStatus, 5);
-//        List<String> resultTwoStringList = new ArrayList();
-//        for (WebElement elementSecond: listOfResults){
-//            String cardTitleFromSecondPAge = elementSecond.getText();
-//            resultTwoStringList.add(cardTitleFromSecondPAge);
-//            }
-//        return resultTwoStringList;
-//    }
 }

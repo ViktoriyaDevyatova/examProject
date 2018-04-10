@@ -19,9 +19,9 @@ public class GoogleBaseTest {
 
 
     /**
-     * Runs before every test to open webdriver
+     *Method which runs before every test to open web browser
      * @param browserType - type of the webdriver to use
-     * @param url - url navigate to
+     * @param url - url to navigate to
      */
     @Parameters({"browserType", "url"})
     @BeforeMethod
@@ -47,7 +47,7 @@ public class GoogleBaseTest {
     }
 
     /**
-     * Runs after every test to close webdriver
+     * Method which runs after every test to close web browser
      */
     @AfterMethod
     public void afterTest(){

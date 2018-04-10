@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class GoogleSearchTest extends GoogleBaseTest {
 
+    /**
+     * Data store which provides search therms for the method searchTest
+     */
     @DataProvider
     public Object[][] searchTest() {
         return new Object[][]{
@@ -19,15 +22,20 @@ public class GoogleSearchTest extends GoogleBaseTest {
         };
     }
 
+    /**
+     * Test which verifies search on the google web page and verifies quantity of search results on the first and second pages.
+     * @param searchWord - therm which uses for search
+     */
     @Test(dataProvider = "searchTest")
     public void searchTest(String searchWord)  {
 
+        String initialPageTitle = homePage.getPageTitle();
         GoogleSearchPage searchPage = homePage.searchByTerm(searchWord);
+        Assert.assertNotEquals(initialPageTitle, homePage.getPageTitle(), "Page with search results is not opened");
+
         Assert.assertTrue(searchPage.isLoaded(), "Page with search results is not opened");
 
         List<String> resultsFromFirstPage = searchPage.getResults();
-
-        System.out.println(resultsFromFirstPage);
 
         Assert.assertEquals(resultsFromFirstPage.size(), 10,
                 "Expected size of results is not 10" );
@@ -39,8 +47,6 @@ public class GoogleSearchTest extends GoogleBaseTest {
         Assert.assertTrue(searchPage.navigateToSecondPage(), "Second page is not opened");
 
         List<String> resultsFromSecondPage = searchPage.getResults();
-
-        System.out.println(resultsFromSecondPage);
 
         Assert.assertEquals(resultsFromSecondPage.size(), 10,
                 "Expected size of results is not 10" );
